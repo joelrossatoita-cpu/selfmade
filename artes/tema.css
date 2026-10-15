@@ -1,0 +1,67 @@
+/* selfmade. — sistema dos stories (1080 × 1920)
+   Estrutura inspirada no modelo de sequência com um objetivo por story:
+   1 gancho (dor) → 2 solução (como funciona) → 3 chamada única para a compra.
+   Zonas seguras: nada de texto acima de y = 250 nem abaixo de y = 1670.
+   Cores da marca: grafite #13241C · creme #F3EFE6 · verde #1E6B47 · verde claro #7FD1A1 (só sobre grafite). */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap');
+:root{--ink:#13241C;--cream:#F3EFE6;--green:#1E6B47;--mint:#7FD1A1;--x:72px;--topo:250px;--base:250px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'Inter Tight',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+
+.story{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg);color:var(--fg);padding:var(--topo) var(--x) var(--base);display:flex;flex-direction:column}
+.story>*{position:relative;z-index:1}
+.story>.fundo,.story>.deco{position:absolute;z-index:0}
+
+/* temas */
+.t-ink{--bg:#13241C;--fg:#F3EFE6;--mudo:rgba(243,239,230,.72);--linha:rgba(243,239,230,.24);--ponto:rgba(243,239,230,.07);--acento:#7FD1A1;--mk-bg:#7FD1A1;--mk-fg:#13241C}
+.t-cream{--bg:#F3EFE6;--fg:#13241C;--mudo:rgba(19,36,28,.7);--linha:rgba(19,36,28,.22);--ponto:rgba(19,36,28,.075);--acento:#1E6B47;--mk-bg:#1E6B47;--mk-fg:#F3EFE6}
+.t-green{--bg:#1E6B47;--fg:#F3EFE6;--mudo:rgba(243,239,230,.88);--linha:rgba(243,239,230,.38);--ponto:rgba(19,36,28,.14);--acento:#F3EFE6;--mk-bg:#F3EFE6;--mk-fg:#1E6B47}
+
+/* fundo pontilhado */
+.fundo{inset:0;background-image:radial-gradient(circle,var(--ponto) 2px,transparent 2.4px);background-size:54px 54px;background-position:27px 27px}
+
+/* ponto da marca como forma gráfica */
+.deco{border-radius:50%}
+
+/* elementos */
+.chip{align-self:flex-start;font-size:34px;font-weight:500;letter-spacing:.01em;padding:14px 30px;border:3px solid var(--acento);color:var(--acento)}
+h1{margin-top:44px;font-weight:500;letter-spacing:-.055em;line-height:1.04}
+.mk{background:var(--mk-bg);color:var(--mk-fg);padding:0 .1em;margin:0 -.04em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sub{margin-top:44px;font-size:48px;line-height:1.25;color:var(--mudo);max-width:900px}
+.sub b{color:var(--fg);font-weight:500}
+
+.bar{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:34px;border-top:3px solid var(--linha);font-size:34px;font-weight:500}
+.bar .mark{font-size:54px;font-weight:600;letter-spacing:-.05em;line-height:1}
+.bar .mark i{font-style:normal;color:var(--acento)}
+.bar .mark small{display:block;margin-top:8px;font-size:28px;font-weight:500;letter-spacing:0;color:var(--mudo)}
+.bar .next{color:var(--acento)}
+
+/* 01 — gancho */
+.s1 h1{font-size:164px}
+.dores{margin-top:64px;border-top:3px solid var(--linha)}
+.dor{display:grid;grid-template-columns:96px 1fr;align-items:center;padding:34px 0;border-bottom:3px solid var(--linha)}
+.dor i{font-style:normal;font-size:76px;font-weight:500;color:var(--acento);line-height:1}
+.dor b{display:block;font-size:56px;font-weight:500;letter-spacing:-.03em;line-height:1.05}
+.dor span{display:block;margin-top:8px;font-size:38px;color:var(--mudo)}
+
+/* 02 — solução */
+.s2 h1{font-size:140px}
+.passos{margin-top:48px;border-top:3px solid var(--fg)}
+.passo{display:grid;grid-template-columns:200px 1fr;align-items:center;padding:26px 0;border-bottom:3px solid var(--fg)}
+.passo .n{font-size:130px;font-weight:600;letter-spacing:-.06em;line-height:.9;color:transparent;-webkit-text-stroke:4px var(--acento)}
+.passo b{display:block;font-size:58px;font-weight:500;letter-spacing:-.035em;line-height:1.02}
+.passo span{display:block;margin-top:10px;font-size:38px;color:var(--mudo)}
+.selo{margin-top:34px;font-size:42px;line-height:1.2;color:var(--mudo)}
+.selo b{color:var(--fg);font-weight:500}
+
+/* 03 — chamada */
+.s3 h1{font-size:150px}
+.preco{margin-top:40px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 24px}
+.preco small{font-size:72px;font-weight:500;align-self:flex-start;margin-top:26px}
+.preco b{font-size:320px;font-weight:500;letter-spacing:-.08em;line-height:.78}
+.preco span{flex-basis:100%;margin-top:22px;font-size:46px;font-weight:500;line-height:1.15}
+.garantia{margin-top:28px;display:flex;gap:18px;flex-wrap:wrap}
+.garantia span{font-size:34px;font-weight:500;padding:12px 26px;border:3px solid var(--linha)}
+.cta{margin-top:40px;display:flex;justify-content:space-between;align-items:center;background:var(--cream);color:var(--green);padding:36px 48px;font-size:56px;font-weight:600;letter-spacing:-.035em}
+.cta i{font-style:normal}

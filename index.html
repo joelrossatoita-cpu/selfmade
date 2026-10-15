@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>selfmade. — Qualidade de agência, feito por você</title>
+<meta name="description" content="Um sistema que cuida de toda a identidade visual do seu negócio: stories, posts e reels no seu estilo. Pagamento único de R$ 500, sem mensalidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3EFE6;
+  --cream:#F3EFE6;
+  --ink:#13241C;
+  --accent:#1E6B47;
+  --muted:#5b6a62;
+  --line:#13241C;
+  --soft:#E9E4D8;
+  --gut:20px;
+  --max:1240px;
+  --hh:61px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter Tight',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut);width:100%}
+.dot{color:var(--accent)}
+
+/* header + índice */
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:10}
+.top{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-weight:600;font-size:22px;letter-spacing:-.04em;text-decoration:none}
+.btn{display:inline-block;background:var(--accent);color:var(--cream);text-decoration:none;font-weight:500;padding:16px 28px;font-size:17px;border:1px solid var(--accent);transition:background .15s,color .15s}
+.btn:hover{background:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:9px 16px;font-size:15px}
+nav.tabs{flex:1;min-width:0;margin-left:28px;align-self:stretch}
+nav.tabs div{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;height:100%;align-items:stretch}
+nav.tabs div::-webkit-scrollbar{display:none}
+nav.tabs a{white-space:nowrap;text-decoration:none;font-size:15px;display:flex;align-items:center;border-bottom:2px solid transparent;color:var(--muted);transition:color .15s}
+nav.tabs a:hover{color:var(--ink)}
+nav.tabs a[aria-current=page]{color:var(--ink);font-weight:500;border-bottom-color:var(--accent)}
+
+/* tópicos: mesma altura e mesma estrutura */
+.panel{border-bottom:1px solid var(--line)}
+html{scroll-snap-type:y mandatory;scroll-padding-top:var(--hh);scroll-behavior:smooth}
+.panel{background:var(--bg);overflow-x:clip;display:flex;scroll-snap-align:start;scroll-snap-stop:always;min-height:calc(100vh - var(--hh));min-height:calc(100svh - var(--hh))}
+.js .panel>.wrap>*{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .panel.in>.wrap>*{opacity:1;transform:none}
+.js .panel.in>.wrap>*:nth-child(2){transition-delay:.08s}
+.js .panel.in>.wrap>*:nth-child(3){transition-delay:.16s}
+.js .panel.in>.wrap>*:nth-child(4){transition-delay:.24s}
+.js .panel.in>.wrap>*:nth-child(5){transition-delay:.32s}
+.js .panel.in>.wrap>*:nth-child(6){transition-delay:.4s}
+.cue{margin-top:auto;padding-top:20px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.cue i{display:inline-block;font-style:normal;color:var(--accent);animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+  .js .panel>.wrap>*{transition:none;opacity:1;transform:none}
+  .cue i{animation:none}
+}
+.panel>.wrap{display:flex;flex-direction:column;justify-content:center;padding-top:44px;padding-bottom:20px}
+.num{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:12px}
+h1,h2{font-weight:500;letter-spacing:-.04em;line-height:.98}
+h2{font-size:clamp(34px,5.4vw,64px);max-width:15ch}
+h1{font-size:clamp(40px,5.2vw,84px);letter-spacing:-.045em;line-height:.94}
+.lead{margin-top:20px;max-width:520px;font-size:19px}
+.content{margin-top:36px}
+
+/* início */
+.eyebrow{font-size:14px;margin-bottom:24px;display:flex;gap:12px;align-items:center}
+.eyebrow b{font-weight:500;background:var(--accent);color:var(--cream);padding:2px 8px}
+.cta-row{margin-top:32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.cta-row small{color:var(--muted);font-size:14px}
+
+
+
+/* fundos alternados */
+.t-ink{background:#13241C;color:var(--cream);--line:rgba(243,239,230,.35);--muted:#A9B8AE;--accent:#7FD1A1}
+
+/* início: texto + leque */
+.hero-main{display:block}
+.fan{position:relative;height:230px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;outline-offset:6px}
+.fan .card{--cw:140px;position:absolute;left:50%;top:calc(50% - var(--cw)*.889 - 12px);width:var(--cw);aspect-ratio:9/16;margin-left:calc(var(--cw)/-2);border-radius:calc(var(--cw)*.06);padding:1.3em 1.3em 1.5em;font-size:max(6.5px,calc(var(--cw)/22));line-height:1.15;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 6px rgba(19,36,28,.10),0 10px 24px rgba(19,36,28,.12),0 34px 60px -18px rgba(19,36,28,.32);transform-origin:50% 100%;will-change:transform;transition:transform .85s cubic-bezier(.22,1,.36,1),box-shadow .5s ease}
+.fan .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fan .top{display:flex;justify-content:space-between;font-size:.62em;font-weight:500;letter-spacing:.02em;opacity:.8;padding-bottom:.8em;border-bottom:1px solid currentColor;border-bottom-color:color-mix(in srgb,currentColor 35%,transparent)}
+.fan .ttl{margin-top:1.1em;font-size:2.35em;font-weight:500;letter-spacing:-.04em;line-height:.98}
+.fan .big{margin-top:auto;font-size:5.4em;font-weight:500;letter-spacing:-.07em;line-height:.85}
+.fan .list{margin-top:1.6em;list-style:none;font-size:.9em}
+.fan .list li{display:flex;gap:.9em;padding:.65em 0;border-top:1px solid rgba(19,36,28,.3)}
+.fan .list li:last-child{border-bottom:1px solid rgba(19,36,28,.3)}
+.fan .list i{font-style:normal;font-weight:500;color:#1E6B47;min-width:1.6em}
+.fan .disc{margin-top:auto;align-self:flex-end;width:62%;aspect-ratio:1;border-radius:50%;background:#7FD1A1}
+.fan .foot{display:flex;justify-content:space-between;margin-top:1.4em;font-size:.68em;font-weight:500;opacity:.85}
+.fan .c1 .big{margin-bottom:0}
+.fan .c2{border:1px solid rgba(19,36,28,.18)}
+.fan .c2 .list{margin-bottom:auto}
+.fan-note{display:none}
+.fan .card.has-img{padding:0;background:none}
+.fan .card.has-img img{display:block;width:100%;height:100%;object-fit:cover}
+.fan .c1{background:var(--accent);color:var(--cream)}
+.fan .c2{background:var(--cream);color:var(--ink)}
+.fan .c3{background:var(--ink);color:var(--cream)}
+.fan .card[data-pos="0"]{transform:translateX(0) rotate(0);z-index:3}
+.fan .card[data-pos="0"]:hover{transform:translateY(-12px) scale(1.07);box-shadow:0 4px 10px rgba(19,36,28,.12),0 18px 36px rgba(19,36,28,.18),0 46px 80px -20px rgba(19,36,28,.4)}
+.fan .card[data-pos="1"]{transform:translateX(30%) rotate(8deg);z-index:2}
+.fan .card[data-pos="2"]{transform:translateX(-30%) rotate(-8deg);z-index:1}
+.fan:hover .card[data-pos="1"]{transform:translateX(36%) rotate(10deg)}
+.fan:hover .card[data-pos="2"]{transform:translateX(-36%) rotate(-10deg)}
+.fan .hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:13px;color:var(--muted)}
+
+
+#inicio{flex-direction:column;position:relative;overflow:hidden}
+#inicio>.wrap{flex:1}
+.js .fan{opacity:0;transition:opacity .9s .25s ease}
+.js .panel.in .fan{opacity:1}
+
+
+/* como funciona — 3 colunas detalhadas */
+.passos3{display:grid;grid-template-columns:1fr;gap:22px;margin-top:28px}
+.p3{padding:0}
+.p3 .n{font-size:34px;font-weight:500;letter-spacing:-.045em;line-height:1;color:var(--accent)}
+.p3 h3{font-size:22px;font-weight:500;letter-spacing:-.025em;line-height:1.15;margin-top:6px}
+.p3 p{margin-top:6px;color:var(--muted);font-size:15px;line-height:1.4}
+.p3 dl{display:none}
+.como-lead{display:none}
+
+/* exemplos — carrossel circular */
+.ex-lead{margin-top:12px;font-size:17px;max-width:none}
+#resultados h2{max-width:none}
+#resultados>.wrap,.js #resultados>.wrap{padding-bottom:70px}
+.carrossel{--iw:min(56vw,230px);position:relative;height:calc(var(--iw)*1.25);margin-top:6px;user-select:none;touch-action:pan-y}
+.carrossel .item{position:absolute;left:50%;top:0;width:var(--iw);margin-left:calc(var(--iw)/-2);cursor:pointer;transition:transform .75s cubic-bezier(.22,1,.36,1),opacity .75s ease;will-change:transform,opacity}
+.carrossel .item img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:18px;box-shadow:0 3px 8px rgba(19,36,28,.14),0 22px 44px -14px rgba(19,36,28,.42);pointer-events:none}
+.car-ctl{display:flex;justify-content:center;align-items:center;gap:26px;margin-top:22px}
+.car-cap{min-width:230px;text-align:center;line-height:1.15}
+.car-cap b{display:block;font-size:26px;font-weight:500;letter-spacing:-.03em}
+.car-cap span{display:block;margin-top:4px;font-size:15px;color:var(--muted)}
+.car-btn{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--fg);background:transparent;color:var(--fg);font:500 22px 'Inter Tight',sans-serif;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.car-btn:hover{background:var(--fg);color:var(--bg)}
+.car-btn:active{transform:scale(.94)}
+
+/* passos */
+.step{display:grid;grid-template-columns:56px 1fr;padding:20px 0;border-top:1px solid var(--line);gap:12px;align-items:baseline}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step .n{font-size:36px;font-weight:500;letter-spacing:-.04em;color:var(--accent);line-height:1}
+.step h3{font-size:22px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+.step p{color:var(--muted);font-size:16px;margin-top:2px}
+
+/* resultados */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tile{aspect-ratio:9/16;background:var(--soft);border:1px solid var(--line);padding:10px;font-size:13px;font-weight:500;color:var(--muted)}
+.tile:nth-child(odd){background:var(--accent);color:var(--cream)}
+.tile:nth-child(3){background:var(--ink);color:var(--cream)}
+
+/* preço */
+.price{background:var(--accent);color:var(--cream)}
+.price .num{color:var(--cream);opacity:.8}
+#preco h2{max-width:none}
+.preco-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+.p-card{background:var(--cream);color:var(--ink);border-radius:26px;padding:20px 22px;box-shadow:0 4px 10px rgba(0,0,0,.14),0 30px 60px -22px rgba(0,0,0,.5)}
+.p-tag{display:inline-block;border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;padding:3px 14px;font-size:14px;font-weight:500}
+.p-valor{font-size:76px;font-weight:500;letter-spacing:-.06em;line-height:.95;margin-top:8px}
+.p-valor small{font-size:.3em;letter-spacing:-.02em;margin-right:6px;vertical-align:top;position:relative;top:.3em}
+.p-sub{margin-top:6px;font-size:15px;color:#4a5a50}
+.p-selo{display:flex;gap:12px;align-items:center;background:#E3ECDD;border-radius:16px;padding:10px 14px;margin-top:14px}
+.p-selo svg{width:34px;height:34px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.7}
+.p-selo b{display:block;font-weight:500;font-size:16px;line-height:1.2}
+.p-selo span{display:block;font-size:13px;color:#4a5a50}
+.price .btn.p-btn{display:block;width:100%;text-align:center;margin-top:14px;border-radius:16px;background:var(--accent);color:var(--cream);border-color:var(--accent);padding:15px 18px;font-size:17px}
+.price .btn.p-btn:hover{background:var(--ink);border-color:var(--ink)}
+.p-nota{margin-top:8px;font-size:12.5px;line-height:1.4;color:#4a5a50}
+.p-itens{display:none}
+.p-calc{background:rgba(19,36,28,.3);border-radius:20px;padding:14px 16px}
+.p-calc label{display:block;font-size:14px;font-weight:500;line-height:1.3}
+.calc-row{display:flex;align-items:center;gap:12px;margin-top:10px}
+.calc-row input[type=number]{width:104px;border:none;border-radius:12px;padding:8px 12px;font:500 17px 'Inter Tight',sans-serif;color:var(--ink);background:var(--cream)}
+.calc-row input[type=range]{flex:1;accent-color:var(--cream);min-width:0}
+.calc-out{margin-top:10px;font-size:14px;line-height:1.4}
+.calc-out b{font-weight:600}
+
+/* perguntas */
+.faq-grid{display:block}
+details{border-top:1px solid var(--line);padding:13px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-size:17px;font-weight:500;letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.25}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:24px;line-height:1;flex:none}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-width:640px}
+.faq-contato{margin-top:16px;padding:16px 18px;border-radius:18px;background:var(--soft)}
+.faq-contato b{display:block;font-size:17px;font-weight:500;letter-spacing:-.02em}
+.faq-contato p{margin-top:4px;font-size:14px;color:var(--muted);line-height:1.4}
+.faq-contato a{display:inline-block;margin-top:8px;font-size:16px;font-weight:500;color:var(--accent);word-break:break-all}
+.faq-contato a:hover{text-decoration:underline}
+
+/* barra fixa mobile */
+.sticky{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px var(--gut);display:flex;justify-content:space-between;align-items:center;z-index:20}
+.sticky b{font-weight:500;font-size:18px}
+.sticky small{display:block;color:var(--muted);font-size:12px;line-height:1.2}
+.js .panel>.wrap{padding-bottom:84px}
+
+@media(max-width:759px){
+  header .btn{display:none}
+  nav.tabs{margin-left:18px}
+  nav.tabs div{gap:16px}
+  #inicio .eyebrow,#inicio .cue{display:none}
+  #preco .p-sub,#preco .p-nota:first-of-type{display:none}
+  details{padding:11px 0}
+  .faq-contato{margin-top:12px;padding:13px 16px}
+  #preco>.wrap,.js #preco>.wrap{padding-top:26px}
+  .p-valor{font-size:64px}
+  .p-card{padding:18px 20px}
+  .p-calc{padding:12px 14px}
+  .p-calc label{font-size:13px}
+  .calc-out{font-size:13px;margin-top:8px}
+
+  .js #inicio>.wrap{padding-bottom:12px}
+  .fan{height:216px;margin:0 var(--gut) 84px}
+  .fan .card{--cw:96px}
+}
+@media(min-width:900px){
+  .hero-text{max-width:600px;pointer-events:auto}
+  #inicio>.wrap{position:relative;z-index:2;pointer-events:none}
+  .fan{--fcw:clamp(300px,26vw,420px);position:absolute;right:-6vw;bottom:-70px;width:calc(var(--fcw)*2.1);height:calc(var(--fcw)*1.78 + 50px);margin:0;z-index:1}
+  .fan .card{--cw:var(--fcw);top:25px;padding:1.4em 1.4em 3.4em}
+  .fan .hint{display:none}
+  .fan-note{display:block;margin-top:28px;font-size:14px;color:var(--muted);max-width:420px}
+  .fan-note span{color:var(--accent);margin-right:6px}
+}
+@media(min-width:760px){
+  #faq h2{max-width:none}
+  .faq-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:56px;align-items:start;margin-top:28px}
+  summary{font-size:19px}
+  details{padding:15px 0}
+  details p{font-size:16px}
+  .faq-contato{margin-top:0;padding:26px 28px;border-radius:24px;position:sticky;top:100px}
+  .faq-contato b{font-size:22px}
+  .faq-contato p{font-size:16px;margin-top:8px}
+  .faq-contato a{font-size:18px;margin-top:14px}
+
+  #preco>.wrap,.js #preco>.wrap{padding-bottom:66px}
+  .preco-grid{grid-template-columns:.86fr 1.14fr;gap:28px;align-items:stretch;margin-top:26px}
+  .p-card{padding:30px 32px}
+  .p-tag{font-size:15px;padding:4px 16px}
+  .p-valor{font-size:128px;margin-top:14px}
+  .p-sub{font-size:17px}
+  .p-selo{margin-top:20px;padding:14px 18px}
+  .p-selo svg{width:40px;height:40px}
+  .p-selo b{font-size:18px}
+  .price .btn.p-btn{margin-top:20px;padding:18px 20px;font-size:19px}
+  .p-nota{font-size:13.5px;margin-top:12px}
+  .p-dir{display:flex;flex-direction:column;gap:14px}
+  .p-itens{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .p-item{background:rgba(243,239,230,.1);border:1px solid rgba(243,239,230,.28);border-radius:20px;padding:18px 20px}
+  .p-item svg{width:30px;height:30px;fill:none;stroke:var(--cream);stroke-width:1.6;display:block}
+  .p-item b{display:block;margin-top:12px;font-weight:500;font-size:18px;line-height:1.2}
+  .p-item span{display:block;margin-top:4px;font-size:14.5px;opacity:.82;line-height:1.35}
+  .p-calc{padding:18px 22px}
+  .p-calc label{font-size:16px}
+  .calc-out{font-size:15.5px}
+
+  .carrossel{--iw:min(330px,calc((100svh - 410px)*.8))}
+  .ex-lead{font-size:19px}
+
+
+  #como h2{max-width:none}
+  #como>.wrap,.js #como>.wrap{padding-bottom:96px}
+  .passos3{grid-template-columns:repeat(3,1fr);gap:56px;margin-top:40px}
+  .como-lead{display:block;margin-top:16px;max-width:680px}
+  .p3{padding:0}
+  .p3 .n{font-size:72px;font-weight:500;letter-spacing:-.05em}
+  .p3 h3{font-size:28px;margin-top:16px}
+  .p3 p{margin-top:12px;font-size:17px;line-height:1.5;min-height:6em}
+  .p3 dl{display:block;margin-top:22px}
+  .p3 dl div{display:grid;grid-template-columns:84px 1fr;gap:10px;padding:6px 0;font-size:15px;line-height:1.35}
+  .p3 dt{color:var(--accent);font-weight:500}
+  .p3 dd{color:var(--fg)}
+
+  :root{--gut:40px}
+  .panel>.wrap{padding-top:24px;padding-bottom:140px}
+  .js .panel>.wrap{padding-bottom:140px}
+  .sticky{display:none}
+  .step{grid-template-columns:100px 1fr;padding:24px 0}
+  .step .n{font-size:48px}
+  .gal{max-width:760px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <a class="logo" href="#inicio">selfmade<span class="dot">.</span></a>
+    <nav class="tabs" id="tabs" aria-label="Índice"><div></div></nav>
+    <a class="btn sm" href="#preco">Quero minha identidade visual</a>
+  </div>
+</header>
+
+<main>
+
+<section class="panel" id="inicio" data-label="Início">
+  <div class="wrap">
+    <div class="hero-main">
+      <div class="hero-text">
+        <div class="eyebrow"><b>Pagamento único</b> Sem mensalidade</div>
+        <h1>Qualidade de agência.<br>Feito por você<span class="dot">.</span></h1>
+        <p class="lead">Um sistema que cuida de toda a identidade visual do seu negócio. Stories, posts e reels sempre no seu estilo, sem você se preocupar.</p>
+        <div class="cta-row">
+          <a class="btn" href="#preco">Quero minha identidade visual</a>
+          <small>R$ 500 · 7 dias de garantia</small>
+        </div>
+        <p class="fan-note"><span>→</span> Exemplos do que você vai criar para o seu negócio. Clique nas artes para trocar a ordem.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Leque: para usar as artes reais, coloque <img src="..." alt="..."> dentro de cada .card -->
+  <div class="fan" id="fan" role="button" tabindex="0" aria-label="Exemplos de stories para negócios. Clique para trocar a ordem.">
+    <div class="card c1 has-img" data-pos="0"><img src="artes/exemplos/story-cafeteria.png" alt="Exemplo de story de cafeteria: combo da manhã até as 10h, peça pelo WhatsApp." width="1080" height="1920"></div>
+    <div class="card c2 has-img" data-pos="1"><img src="artes/exemplos/story-nutricao.png" alt="Exemplo de story de nutrição: 3 trocas simples que fazem diferença." width="1080" height="1920"></div>
+    <div class="card c3 has-img" data-pos="2"><img src="artes/exemplos/story-barbearia.png" alt="Exemplo de story de barbearia: agenda aberta esta semana, reserve pelo WhatsApp." width="1080" height="1920"></div>
+    <span class="hint">Clique nas artes para trocar</span>
+  </div>
+</section>
+
+<section class="panel t-ink" id="como" data-label="Como funciona">
+  <div class="wrap">
+    <span class="num">01 — Como funciona</span>
+    <h2>Apenas três passos até o primeiro post<span class="dot">.</span></h2>
+    <p class="lead como-lead">Você não precisa entender de IA nem de design. O vídeo-tutorial, de até 2 horas, leva você do primeiro acesso ao primeiro post publicado.</p>
+    <div class="content passos3">
+      <div class="p3">
+        <div class="n">01</div>
+        <h3>Configure sua marca</h3>
+        <p>Conte o que você vende, para quem e como quer ser visto. O sistema sugere uma identidade visual para o seu negócio, e você ajusta como quiser.</p>
+        <dl><div><dt>Você</dt><dd>responde e escolhe o que preferir</dd></div><div><dt>Sistema</dt><dd>sugere cores, fontes e estilo</dd></div></dl>
+      </div>
+      <div class="p3">
+        <div class="n">02</div>
+        <h3>Peça o conteúdo</h3>
+        <p>Escolha o formato e o assunto do dia: uma promoção, uma dica, um lançamento ou um aviso. A arte sai pronta, sempre na mesma identidade.</p>
+        <dl><div><dt>Você</dt><dd>escolhe formato e assunto</dd></div><div><dt>Sistema</dt><dd>monta o story, o post ou o reel</dd></div></dl>
+      </div>
+      <div class="p3">
+        <div class="n">03</div>
+        <h3>Publique</h3>
+        <p>Baixe a arte, ajuste o texto se quiser e poste. O tutorial mostra cada passo na tela, sem pular etapa.</p>
+        <dl><div><dt>Você</dt><dd>revisa e publica</dd></div><div><dt>Sistema</dt><dd>entrega a arte pronta para postar</dd></div></dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="resultados" data-label="Exemplos">
+  <div class="wrap">
+    <span class="num">02 — Exemplos</span>
+    <h2>O que você consegue criar<span class="dot">.</span></h2>
+    <p class="lead ex-lead">Cada marca tem logo, cores e estilo próprios.</p>
+    <div class="content">
+      <div class="carrossel" id="carrossel" aria-roledescription="carrossel" aria-label="Exemplos de artes de marcas diferentes">
+        <figure class="item" data-nome="patinha" data-tipo="Pet shop"><img src="artes/identidades/06-petshop.png" alt="Exemplo de arte do pet shop patinha: banho e tosa, agende hoje." width="1080" height="1350" draggable="false"></figure>
+        <figure class="item" data-nome="brasa café" data-tipo="Cafeteria"><img src="artes/identidades/01-cafeteria.png" alt="Exemplo de arte da cafeteria brasa café: combo da manhã." width="1080" height="1350" draggable="false"></figure>
+        <figure class="item" data-nome="navalha" data-tipo="Barbearia"><img src="artes/identidades/02-barbearia.png" alt="Exemplo de arte da barbearia navalha: agenda aberta." width="1080" height="1350" draggable="false"></figure>
+        <figure class="item" data-nome="prato leve" data-tipo="Nutrição"><img src="artes/identidades/03-nutricao.png" alt="Exemplo de arte da nutricionista prato leve: 3 trocas simples." width="1080" height="1350" draggable="false"></figure>
+        <figure class="item" data-nome="linha." data-tipo="Loja de roupas"><img src="artes/identidades/04-moda.png" alt="Exemplo de arte da loja linha.: nova coleção." width="1080" height="1350" draggable="false"></figure>
+        <figure class="item" data-nome="treino 40" data-tipo="Personal trainer"><img src="artes/identidades/05-personal.png" alt="Exemplo de arte do personal trainer treino 40: checklist antes de treinar." width="1080" height="1350" draggable="false"></figure>
+      </div>
+      <div class="car-ctl">
+        <button class="car-btn" id="car-prev" type="button" aria-label="Exemplo anterior">←</button>
+        <div class="car-cap" aria-live="polite"><b id="car-nome">patinha</b><span id="car-tipo">Pet shop</span></div>
+        <button class="car-btn" id="car-next" type="button" aria-label="Próximo exemplo">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel price" id="preco" data-label="Preço">
+  <div class="wrap">
+    <span class="num">03 — Preço</span>
+    <h2>Uma vez só. Sem mensalidade<span style="opacity:.7">.</span></h2>
+    <div class="content preco-grid">
+      <div class="p-card">
+        <span class="p-tag">Pagamento único</span>
+        <div class="p-valor"><small>R$</small>500</div>
+        <p class="p-sub">Sem renovação e sem mensalidade.</p>
+        <div class="p-selo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><div><b>7 dias de garantia</b><span>Devolução integral do valor</span></div></div>
+        <a class="btn p-btn" href="#preco">Quero minha identidade visual →</a>
+        <p class="p-nota">Acesso por e-mail logo após o pagamento.</p>
+        <p class="p-nota">O sistema roda no Claude, que tem assinatura própria, contratada à parte e não incluída nos R$ 500.</p>
+      </div>
+      <div class="p-dir">
+        <div class="p-itens">
+          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg><b>Sistema de criação pronto</b><span>Modelos e instruções para criar as suas artes.</span></div>
+          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg><b>Vídeo-tutorial de até 2 horas</b><span>Do primeiro acesso ao primeiro post.</span></div>
+          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="10" rx="2"/><rect x="13" y="3" width="8" height="6" rx="2"/><rect x="13" y="11" width="8" height="10" rx="2"/><rect x="3" y="15" width="8" height="6" rx="2"/></svg><b>Modelos de story, post e reel</b><span>Todos na identidade da sua marca.</span></div>
+          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><path d="M12 21c-1.5 0-2-1.2-1.4-2.4.7-1.4 2-1.6 3.4-1.6h2.2"/></svg><b>Identidade visual sugerida</b><span>Cores, fontes e estilo. Você ajusta.</span></div>
+        </div>
+        <div class="p-calc">
+          <label for="mens">Quanto você paga, ou pagaria, por mês a uma agência ou freelancer?</label>
+          <div class="calc-row"><input id="mens" type="number" min="0" max="20000" step="50" value="500" inputmode="numeric" aria-label="Valor da mensalidade em reais"><input id="mens-r" type="range" min="0" max="3000" step="50" value="500" aria-label="Ajustar o valor da mensalidade"></div>
+          <p class="calc-out" id="calc-out" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="faq" data-label="FAQ">
+  <div class="wrap">
+    <span class="num">04 — FAQ</span>
+    <h2>Dúvidas frequentes<span class="dot">.</span></h2>
+    <div class="content faq-grid">
+      <div class="faq-lista">
+      <details><summary>Preciso entender de IA ou de design?</summary><p>Não. O vídeo-tutorial, de até 2 horas, começa do zero e mostra cada passo na tela, do primeiro acesso ao primeiro post publicado. O sistema sugere as cores, as fontes e o estilo da sua marca, e você só escolhe o que preferir e ajusta o que quiser.</p></details>
+      <details><summary>O que exatamente eu recebo?</summary><p>Um sistema de criação pronto, com modelos e instruções; o vídeo-tutorial de até 2 horas; modelos de story, post e reel; e a sugestão de uma identidade visual para o seu negócio. Tudo chega por e-mail logo após a confirmação do pagamento.</p></details>
+      <details><summary>As artes vão ficar com cara de IA ou de template?</summary><p>Elas seguem a identidade da sua marca (cores, fontes e estilo), e não imagens genéricas. Na página de exemplos você vê seis marcas diferentes, cada uma com logo, ícones e visual próprios.</p></details>
+      <details><summary>Serve para o meu tipo de negócio?</summary><p>O sistema se adapta ao seu negócio: você conta o que vende, para quem e como quer aparecer, e a identidade é construída em cima disso. Os exemplos mostram cafeteria, barbearia, nutrição, loja de roupas, personal trainer e pet shop.</p></details>
+      <details><summary>Tem algum custo além dos R$ 500?</summary><p>O pagamento é único, sem mensalidade e sem renovação. O sistema roda no Claude, que tem assinatura própria, contratada por você à parte e não incluída nos R$ 500. Ela fica sob o seu controle.</p></details>
+      <details><summary>A selfmade publica no meu Instagram?</summary><p>Não. Você cria a arte, baixa e publica no seu perfil, do jeito e no horário que preferir. Quem opera o perfil continua sendo você.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia, com devolução integral do valor. Se não for o que esperava, escreva para contato@useselfmade.com.br dentro desse prazo.</p></details>
+      </div>
+      <aside class="faq-contato">
+        <b>Não achou a sua dúvida?</b>
+        <p>Escreva para a gente. A resposta chega por e-mail.</p>
+        <a href="mailto:contato@useselfmade.com.br">contato@useselfmade.com.br</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="sticky">
+  <div><b>R$ 500</b><small>pagamento único</small></div>
+  <a class="btn sm" href="#preco">Quero minha identidade visual</a>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  root.classList.add('js');
+  var panels=[].slice.call(document.querySelectorAll('.panel'));
+  var bar=document.querySelector('#tabs div');
+  var links=[];
+  panels.forEach(function(p,i){
+    var a=document.createElement('a');
+    a.href='#'+p.id;
+    a.textContent=p.getAttribute('data-label');
+    bar.appendChild(a);
+    links.push(a);
+  });
+  function setCurrent(idx){
+    links.forEach(function(a,i){
+      if(i===idx){
+        if(a.getAttribute('aria-current')!=='page'){
+          a.setAttribute('aria-current','page');
+          var l=a.offsetLeft-(bar.clientWidth-a.offsetWidth)/2;
+          bar.scrollTo({left:l,behavior:'smooth'});
+        }
+      } else a.removeAttribute('aria-current');
+    });
+  }
+  setCurrent(0);
+  panels[0].classList.add('in');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var idx=panels.indexOf(en.target);
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          setCurrent(idx);
+          try{ history.replaceState(null,'','#'+en.target.id); }catch(err){}
+        } else {
+          en.target.classList.remove('in');
+        }
+      });
+    },{threshold:0.55,rootMargin:'-61px 0px 0px 0px'});
+    panels.forEach(function(p){ io.observe(p); });
+  } else {
+    panels.forEach(function(p){ p.classList.add('in'); });
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="#"]');
+    if(!a) return;
+    var target=document.getElementById(a.getAttribute('href').slice(1));
+    if(!target||panels.indexOf(target)<0) return;
+    e.preventDefault();
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  var fan=document.getElementById('fan');
+  if(fan){
+    var cards=[].slice.call(fan.querySelectorAll('.card'));
+    function posOf(c){ return +c.getAttribute('data-pos'); }
+    function bringToFront(card){
+      var from=posOf(card);
+      if(from===0) return;
+      var center=cards.filter(function(c){ return posOf(c)===0; })[0];
+      card.style.zIndex=5;
+      card.setAttribute('data-pos','0');
+      center.setAttribute('data-pos',String(from));
+      setTimeout(function(){ card.style.zIndex=''; },800);
+    }
+    cards.forEach(function(c){
+      c.addEventListener('click',function(e){
+        e.stopPropagation();
+        if(posOf(c)===0){
+          var next=cards.filter(function(x){ return posOf(x)===1; })[0];
+          bringToFront(next);
+        } else bringToFront(c);
+      });
+    });
+    fan.addEventListener('click',function(){
+      bringToFront(cards.filter(function(x){ return posOf(x)===1; })[0]);
+    });
+    fan.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        bringToFront(cards.filter(function(x){ return posOf(x)===1; })[0]);
+      }
+    });
+  }
+  (function(){
+    var car=document.getElementById('carrossel'); if(!car) return;
+    var items=[].slice.call(car.querySelectorAll('.item')), n=items.length, cur=0;
+    var nome=document.getElementById('car-nome'), tipo=document.getElementById('car-tipo');
+    function layout(){
+      items.forEach(function(it,i){
+        var off=((i-cur)%n+n)%n; if(off>n/2) off-=n;
+        var a=Math.abs(off), vis=a<=2;
+        it.style.transform='translateX('+(off*66)+'%) scale('+(1-a*.14)+')';
+        it.style.opacity=vis?[1,.5,.22][a]:0;
+        it.style.zIndex=10-a;
+        it.style.pointerEvents=vis?'auto':'none';
+        it.setAttribute('aria-hidden',a===0?'false':'true');
+      });
+      nome.textContent=items[cur].getAttribute('data-nome');
+      tipo.textContent=items[cur].getAttribute('data-tipo');
+    }
+    function go(d){ cur=((cur+d)%n+n)%n; layout(); }
+    items.forEach(function(it,i){ it.addEventListener('click',function(){ if(i!==cur){ var off=((i-cur)%n+n)%n; go(off>n/2?off-n:off); } }); });
+    document.getElementById('car-prev').addEventListener('click',function(){ go(-1); });
+    document.getElementById('car-next').addEventListener('click',function(){ go(1); });
+    var x0=null;
+    car.addEventListener('pointerdown',function(e){ x0=e.clientX; });
+    window.addEventListener('pointerup',function(e){ if(x0===null) return; var d=e.clientX-x0; x0=null; if(Math.abs(d)>45) go(d<0?1:-1); });
+    window.addEventListener('keydown',function(e){
+      var p=document.getElementById('resultados'); if(!p||!p.classList.contains('in')) return;
+      if(e.key==='ArrowRight'){ go(1); } else if(e.key==='ArrowLeft'){ go(-1); }
+    });
+    layout();
+  })();
+  (function(){
+    var n=document.getElementById('mens'), r=document.getElementById('mens-r'), out=document.getElementById('calc-out');
+    if(!n||!r||!out) return;
+    var BRL=function(v){ return 'R$ '+Math.round(v).toLocaleString('pt-BR'); };
+    function calc(){
+      var m=parseFloat(n.value);
+      if(!(m>0)){ out.innerHTML='Digite um valor para comparar com os <b>R$ 500</b> da selfmade.'; return; }
+      var meses=Math.floor(500/m)+1, t1;
+      if(m>500) t1='Já no <b>1º mês</b> você gasta mais do que os R$ 500 da selfmade.';
+      else if(m===500) t1='Em <b>1 mês</b> você já gasta os mesmos R$ 500 da selfmade.';
+      else t1='Em <b>'+meses+' meses</b> você já gastou mais do que os R$ 500 da selfmade.';
+      out.innerHTML=t1+' Em 12 meses: <b>'+BRL(m*12)+'</b> contra <b>R$ 500</b>.';
+    }
+    n.addEventListener('input',function(){ r.value=Math.min(parseFloat(n.value)||0,3000); calc(); });
+    r.addEventListener('input',function(){ n.value=r.value; calc(); });
+    calc();
+  })();
+  (function(){
+    var ds=[].slice.call(document.querySelectorAll('#faq details'));
+    ds.forEach(function(d){ d.addEventListener('toggle',function(){ if(d.open) ds.forEach(function(o){ if(o!==d) o.open=false; }); }); });
+  })();
+  var HH=61, lockUntil=0;
+  function currentIndex(){
+    var idx=0;
+    panels.forEach(function(p,i){ if(p.getBoundingClientRect().top<=HH+40) idx=i; });
+    return idx;
+  }
+  window.addEventListener('wheel',function(e){
+    if(e.ctrlKey||Math.abs(e.deltaY)<4||Math.abs(e.deltaX)>Math.abs(e.deltaY)) return;
+    var now=Date.now();
+    var i=currentIndex(), p=panels[i];
+    var r=p.getBoundingClientRect();
+    var fits=p.offsetHeight<=innerHeight-HH+2;
+    if(!fits) return;
+    e.preventDefault();
+    if(now<lockUntil){ lockUntil=Math.max(lockUntil,now+120); return; }
+    var next=panels[i+(e.deltaY>0?1:-1)];
+    if(!next) return;
+    lockUntil=now+850;
+    next.scrollIntoView({behavior:'smooth',block:'start'});
+  },{passive:false});
+  var h=location.hash.slice(1), t=h&&document.getElementById(h);
+  if(t&&panels.indexOf(t)>=0) setTimeout(function(){ t.scrollIntoView({block:'start'}); },0);
+})();
+</script>
+</body>
+</html>
