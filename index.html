@@ -118,13 +118,6 @@ h1{font-size:clamp(40px,5.2vw,84px);letter-spacing:-.045em;line-height:.94}
 
 
 /* como funciona — 3 colunas detalhadas */
-.passos3{display:grid;grid-template-columns:1fr;gap:22px;margin-top:28px}
-.p3{padding:0}
-.p3 .n{font-size:34px;font-weight:500;letter-spacing:-.045em;line-height:1;color:var(--accent)}
-.p3 h3{font-size:22px;font-weight:500;letter-spacing:-.025em;line-height:1.15;margin-top:6px}
-.p3 p{margin-top:6px;color:var(--muted);font-size:15px;line-height:1.4}
-.p3 dl{display:none}
-.como-lead{display:none}
 
 /* exemplos — carrossel circular */
 .ex-lead{margin-top:12px;font-size:17px;max-width:none}
@@ -140,6 +133,33 @@ h1{font-size:clamp(40px,5.2vw,84px);letter-spacing:-.045em;line-height:.94}
 .car-btn{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--fg);background:transparent;color:var(--fg);font:500 22px 'Inter Tight',sans-serif;cursor:pointer;transition:background .2s,color .2s,transform .2s}
 .car-btn:hover{background:var(--fg);color:var(--bg)}
 .car-btn:active{transform:scale(.94)}
+
+/* como funciona — uma etapa por vez */
+#como h2{max-width:none}
+#como>.wrap,.js #como>.wrap{justify-content:flex-start;padding-top:22px;padding-bottom:84px}
+.como-wrap{flex:1;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;min-height:0;margin-top:0}
+.passos3{margin-top:50px;display:grid;width:100%;max-width:520px;text-align:left;cursor:pointer;user-select:none;outline-offset:10px;-webkit-tap-highlight-color:transparent}
+.p3{grid-area:1/1;display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:baseline;align-content:start;opacity:0;transform:translateX(36px);pointer-events:none;transition:opacity .45s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.p3.ativo{opacity:1;transform:none}
+.p3.saiu{transform:translateX(-36px)}
+.p3 .n{font-size:33px;font-weight:500;letter-spacing:-.03em;line-height:1.15;color:var(--accent)}
+.p3 h3{font-size:33px;font-weight:500;letter-spacing:-.03em;line-height:1.15}
+.p3 p{grid-column:1/-1;margin-top:14px;color:var(--muted);font-size:17.6px;line-height:1.5;max-width:520px}
+#como{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.passo-img{position:absolute;left:var(--gut);right:max(var(--gut),calc((100% - var(--max))/2 + var(--gut)));top:360px;height:268px;pointer-events:none}
+.passo-img img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:contain;object-position:right top;opacity:0;transform:translateX(36px);transition:opacity .45s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.passo-img img.ativo{opacity:1;transform:none}
+.passo-img iframe{position:absolute;left:0;top:0;width:1200px;height:960px;border:0;background:transparent;transform-origin:top left;opacity:0;transform:translateX(36px) scale(var(--k,.49))}
+.passo-img.pronto iframe{transition:opacity .45s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+.passo-img iframe.ativo{opacity:1;transform:scale(var(--k,.49))}
+.passo-img iframe.saiu{transform:translateX(-36px) scale(var(--k,.49))}
+.passo-img img.saiu{transform:translateX(-36px)}
+.passo-ctl{position:absolute;left:0;right:0;bottom:92px;display:flex;align-items:center;justify-content:center;gap:18px}
+.pontos{display:flex;gap:8px}
+.pontos i{display:block;width:10px;height:10px;border-radius:99px;border:2px solid var(--accent);transition:width .35s ease,background .35s ease}
+.pontos i.on{width:30px;background:var(--accent)}
+.dica{font-size:14px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.p3,.pontos i{transition:none}}
 
 /* passos */
 .step{display:grid;grid-template-columns:56px 1fr;padding:20px 0;border-top:1px solid var(--line);gap:12px;align-items:baseline}
@@ -243,6 +263,12 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   .fan-note span{color:var(--accent);margin-right:6px}
 }
 @media(min-width:760px){
+  .p3 .n,.p3 h3{font-size:51px}
+  .p3 p{font-size:22px;margin-top:18px;max-width:520px}
+  .passo-img{left:auto;width:590px;top:196px;height:472px}
+  .passo-ctl{bottom:30px}
+  .dica{font-size:15px}
+
 
   #faq h2{max-width:none}
   .faq-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:56px;align-items:start;margin-top:28px}
@@ -281,18 +307,6 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   .ex-lead{font-size:19px}
 
 
-  #como h2{max-width:none}
-  #como>.wrap,.js #como>.wrap{padding-bottom:96px}
-  .passos3{grid-template-columns:repeat(3,1fr);gap:56px;margin-top:40px}
-  .como-lead{display:block;margin-top:16px;max-width:680px}
-  .p3{padding:0}
-  .p3 .n{font-size:72px;font-weight:500;letter-spacing:-.05em}
-  .p3 h3{font-size:28px;margin-top:16px}
-  .p3 p{margin-top:12px;font-size:17px;line-height:1.5;min-height:6em}
-  .p3 dl{display:block;margin-top:22px}
-  .p3 dl div{display:grid;grid-template-columns:84px 1fr;gap:10px;padding:6px 0;font-size:15px;line-height:1.35}
-  .p3 dt{color:var(--accent);font-weight:500}
-  .p3 dd{color:var(--fg)}
 
   :root{--gut:40px}
   .panel>.wrap{padding-top:24px;padding-bottom:140px}
@@ -344,28 +358,28 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   <div class="wrap">
     <span class="num">01 — Como funciona</span>
     <h2>Apenas três passos até o primeiro post<span class="dot">.</span></h2>
-    <p class="lead como-lead">Você não precisa entender de IA nem de design. O vídeo-tutorial, de até 2 horas, leva você do primeiro acesso ao primeiro post publicado.</p>
-    <div class="content passos3">
-      <div class="p3">
-        <div class="n">01</div>
+    <div class="content como-wrap">
+      <div class="passos3" id="passos" role="button" tabindex="0" data-passo="1" aria-label="Três passos. Clique para ver o próximo passo.">
+      <div class="p3 ativo" aria-hidden="false">
+        <div class="n">1</div>
         <h3>Configure sua marca</h3>
         <p>Conte o que você vende, para quem e como quer ser visto. O sistema sugere uma identidade visual para o seu negócio, e você ajusta como quiser.</p>
-        <dl><div><dt>Você</dt><dd>responde e escolhe o que preferir</dd></div><div><dt>Sistema</dt><dd>sugere cores, fontes e estilo</dd></div></dl>
       </div>
-      <div class="p3">
-        <div class="n">02</div>
+      <div class="p3" aria-hidden="true">
+        <div class="n">2</div>
         <h3>Peça o conteúdo</h3>
         <p>Escolha o formato e o assunto do dia: uma promoção, uma dica, um lançamento ou um aviso. A arte sai pronta, sempre na mesma identidade.</p>
-        <dl><div><dt>Você</dt><dd>escolhe formato e assunto</dd></div><div><dt>Sistema</dt><dd>monta o story, o post ou o reel</dd></div></dl>
       </div>
-      <div class="p3">
-        <div class="n">03</div>
+      <div class="p3" aria-hidden="true">
+        <div class="n">3</div>
         <h3>Publique</h3>
         <p>Baixe a arte, ajuste o texto se quiser e poste. O tutorial mostra cada passo na tela, sem pular etapa.</p>
-        <dl><div><dt>Você</dt><dd>revisa e publica</dd></div><div><dt>Sistema</dt><dd>entrega a arte pronta para postar</dd></div></dl>
+      </div>
       </div>
     </div>
   </div>
+  <div class="passo-img" aria-hidden="false"><iframe class="demo ativo" src="artes/uso/uso-1-perguntas.html?anim=1" title="Conversa com o Claude em que o assistente pergunta sobre a cafeteria fictícia brasa café e o dono responde." tabindex="-1" loading="eager"></iframe><iframe class="demo" src="artes/uso/uso-2-pedido.html?anim=1" title="Pedido de um post de feed no Claude, com a arte do combo da manhã da brasa café pronta." tabindex="-1" loading="eager"></iframe><img class="" src="artes/uso/uso-3-publicacao.png" alt="Publicação da arte da brasa café em um perfil de rede social, estilo Instagram." width="1200" height="960" draggable="false"></div>
+  <div class="passo-ctl"><span class="pontos" id="passo-pontos" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span class="dica">Clique para ver o próximo passo →</span></div>
 </section>
 
 <section class="panel" id="resultados" data-label="Exemplos">
@@ -470,7 +484,7 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
       if(i===idx){
         if(a.getAttribute('aria-current')!=='page'){
           a.setAttribute('aria-current','page');
-          var l=a.offsetLeft-(bar.clientWidth-a.offsetWidth)/2;
+          var l=bar.scrollLeft+(a.getBoundingClientRect().left-bar.getBoundingClientRect().left)-(bar.clientWidth-a.offsetWidth)/2;
           bar.scrollTo({left:l,behavior:'smooth'});
         }
       } else a.removeAttribute('aria-current');
@@ -582,6 +596,37 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   (function(){
     var ds=[].slice.call(document.querySelectorAll('#faq details'));
     ds.forEach(function(d){ d.addEventListener('toggle',function(){ if(d.open) ds.forEach(function(o){ if(o!==d) o.open=false; }); }); });
+  })();
+  (function(){
+    var box=document.getElementById('passos'); if(!box) return;
+    var ims=[].slice.call(document.querySelectorAll('.passo-img img, .passo-img iframe')), pi=document.querySelector('.passo-img'), vis=false, ps=[].slice.call(box.querySelectorAll('.p3')), dots=[].slice.call(document.querySelectorAll('#passo-pontos i')), cur=0, n=ps.length;
+    function pintar(){
+      ps.forEach(function(p,i){ var rel=(i-cur+n)%n; p.classList.toggle('ativo',rel===0); p.classList.toggle('saiu',rel===n-1); p.setAttribute('aria-hidden',rel===0?'false':'true'); });
+      ims.forEach(function(m,i){ var rel=(i-cur+n)%n; m.classList.toggle('ativo',rel===0); m.classList.toggle('saiu',rel===n-1); });
+      dots.forEach(function(d,i){ d.classList.toggle('on',i===cur); });
+      box.setAttribute('data-passo',String(cur+1));
+    }
+    function escala(){
+      var P=document.getElementById('como'), mob=window.innerWidth<760;
+      P.style.minHeight='';
+      if(!mob){ pi.style.top=pi.style.height=pi.style.width=pi.style.left=pi.style.right=''; }
+      else {
+        var G=14, MIN=210, pr=P.getBoundingClientRect(), t=box.getBoundingClientRect(), c=document.querySelector('.passo-ctl').getBoundingClientRect();
+        var topo=t.bottom-pr.top+G, livre=c.top-pr.top-G-topo, gut=20, larg=window.innerWidth-2*gut;
+        if(livre<MIN){ P.style.minHeight=Math.ceil(P.offsetHeight+MIN-livre)+'px'; pr=P.getBoundingClientRect(); c=document.querySelector('.passo-ctl').getBoundingClientRect(); livre=c.top-pr.top-G-topo; }
+        var h=Math.max(60,Math.min(larg/1.25,livre)), w=h*1.25;
+        pi.style.top=Math.round(topo)+'px'; pi.style.height=Math.round(h)+'px'; pi.style.width=Math.round(w)+'px'; pi.style.left=Math.round((window.innerWidth-w)/2)+'px'; pi.style.right='auto';
+      }
+      pi.style.setProperty('--k',(pi.clientWidth/1200).toFixed(4));
+    }
+    function tocar(){ var f=ims[cur]; if(vis && f && f.tagName==='IFRAME' && f.contentWindow) f.contentWindow.postMessage('play','*'); }
+    window.addEventListener('message',function(e){ if(e.data==='pronto') tocar(); });
+    window.addEventListener('resize',escala); window.addEventListener('load',escala); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(escala); escala(); requestAnimationFrame(function(){ requestAnimationFrame(function(){ pi.classList.add('pronto'); }); });
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(en){ var v=en[0].intersectionRatio>=.6; if(v&&!vis){ vis=true; tocar(); } else if(!v){ vis=false; } },{threshold:.6}).observe(document.getElementById('como')); } else { vis=true; }
+    function proximo(){ cur=(cur+1)%n; pintar(); tocar(); }
+    document.getElementById('como').addEventListener('click',function(e){ if(e.target.closest('a,button,summary')) return; proximo(); });
+    box.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); proximo(); } });
+    pintar();
   })();
   var HH=61, lockUntil=0;
   function currentIndex(){
