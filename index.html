@@ -81,34 +81,23 @@ h1{font-size:clamp(40px,5.2vw,84px);letter-spacing:-.045em;line-height:.94}
 
 /* início: texto + leque */
 .hero-main{display:block}
-.fan{position:relative;height:230px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;outline-offset:6px}
-.fan .card{--cw:140px;position:absolute;left:50%;top:calc(50% - var(--cw)*.889 - 12px);width:var(--cw);aspect-ratio:9/16;margin-left:calc(var(--cw)/-2);border-radius:calc(var(--cw)*.06);padding:1.3em 1.3em 1.5em;font-size:max(6.5px,calc(var(--cw)/22));line-height:1.15;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 6px rgba(19,36,28,.10),0 10px 24px rgba(19,36,28,.12),0 34px 60px -18px rgba(19,36,28,.32);transform-origin:50% 100%;will-change:transform;transition:transform .85s cubic-bezier(.22,1,.36,1),box-shadow .5s ease}
-.fan .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.fan .top{display:flex;justify-content:space-between;font-size:.62em;font-weight:500;letter-spacing:.02em;opacity:.8;padding-bottom:.8em;border-bottom:1px solid currentColor;border-bottom-color:color-mix(in srgb,currentColor 35%,transparent)}
-.fan .ttl{margin-top:1.1em;font-size:2.35em;font-weight:500;letter-spacing:-.04em;line-height:.98}
-.fan .big{margin-top:auto;font-size:5.4em;font-weight:500;letter-spacing:-.07em;line-height:.85}
-.fan .list{margin-top:1.6em;list-style:none;font-size:.9em}
-.fan .list li{display:flex;gap:.9em;padding:.65em 0;border-top:1px solid rgba(19,36,28,.3)}
-.fan .list li:last-child{border-bottom:1px solid rgba(19,36,28,.3)}
-.fan .list i{font-style:normal;font-weight:500;color:#1E6B47;min-width:1.6em}
-.fan .disc{margin-top:auto;align-self:flex-end;width:62%;aspect-ratio:1;border-radius:50%;background:#7FD1A1}
-.fan .foot{display:flex;justify-content:space-between;margin-top:1.4em;font-size:.68em;font-weight:500;opacity:.85}
-.fan .c1 .big{margin-bottom:0}
-.fan .c2{border:1px solid rgba(19,36,28,.18)}
-.fan .c2 .list{margin-bottom:auto}
+.fan{--cw:112px;position:relative;height:230px;user-select:none;-webkit-tap-highlight-color:transparent;perspective:1500px;perspective-origin:50% 38%}
+.fan .ring{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;transform:translateY(14%) rotateX(-14deg);animation:ring-spin 38s linear infinite}
+@keyframes ring-spin{to{transform:translateY(14%) rotateX(-14deg) rotateY(-360deg)}}
+.fan .glass{position:absolute;left:calc(var(--cw)/-2);top:calc(var(--cw)*-.625);width:var(--cw);height:calc(var(--cw)*1.25);padding:3px;border-radius:calc(var(--cw)*.13);transform-style:preserve-3d;transform:rotateY(calc(var(--i)*45deg)) translateZ(calc(var(--cw)*1.32));background:linear-gradient(145deg,rgba(255,255,255,.62),rgba(255,255,255,.14) 38%,rgba(255,255,255,.08) 62%,rgba(255,255,255,.5));box-shadow:inset 0 0 0 .5px rgba(255,255,255,.85),inset 0 1.5px 1px rgba(255,255,255,.95),inset 0 -1.5px 2px rgba(19,36,28,.18),0 0 0 .5px rgba(19,36,28,.14),0 10px 26px -6px rgba(19,36,28,.3)}
+.fan .glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 28%,rgba(255,255,255,0) 70%,rgba(255,255,255,.28) 100%);mix-blend-mode:soft-light}
+.fan .glass img,.fan .glass .back{position:absolute;inset:3px;width:calc(100% - 6px);height:calc(100% - 6px);border-radius:calc(var(--cw)*.13 - 3px);object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fan .glass img{transform:translateZ(1px)}
+.fan .glass .back{transform:rotateY(180deg) translateZ(1px);background:#fff;box-shadow:inset 0 0 0 .5px rgba(19,36,28,.08)}
+.fan .glass.is-solo{backface-visibility:hidden}
+.fan .float{position:absolute;left:calc(50% - var(--cw)*.6);top:calc(50% - var(--cw)*1.8);width:calc(var(--cw)*1.04);height:calc(var(--cw)*1.3);padding:3px;border-radius:calc(var(--cw)*.2);transform:rotateX(14deg) rotateY(-10deg) rotateZ(4deg);animation:float-y 7s ease-in-out infinite;background:linear-gradient(145deg,rgba(255,255,255,.7),rgba(255,255,255,.16) 40%,rgba(255,255,255,.1) 60%,rgba(255,255,255,.55));box-shadow:inset 0 0 0 .5px rgba(255,255,255,.9),inset 0 1.5px 1px #fff,inset 0 -1.5px 2px rgba(19,36,28,.18),0 0 0 .5px rgba(19,36,28,.14),0 24px 50px -12px rgba(19,36,28,.4)}
+.fan .glass{cursor:pointer}
+.fan .float img{transition:opacity .22s ease}
+.fan .float img.troca{opacity:0}
+.fan .float img{display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(var(--cw)*.2 - 3px)}
+@keyframes float-y{50%{transform:translateY(-10px) rotateX(14deg) rotateY(-4deg) rotateZ(2deg)}}
 .fan-note{display:none}
-.fan .card.has-img{padding:0;background:none}
-.fan .card.has-img img{display:block;width:100%;height:100%;object-fit:cover}
-.fan .c1{background:var(--accent);color:var(--cream)}
-.fan .c2{background:var(--cream);color:var(--ink)}
-.fan .c3{background:var(--ink);color:var(--cream)}
-.fan .card[data-pos="0"]{transform:translateX(0) rotate(0);z-index:3}
-.fan .card[data-pos="0"]:hover{transform:translateY(-12px) scale(1.07);box-shadow:0 4px 10px rgba(19,36,28,.12),0 18px 36px rgba(19,36,28,.18),0 46px 80px -20px rgba(19,36,28,.4)}
-.fan .card[data-pos="1"]{transform:translateX(30%) rotate(8deg);z-index:2}
-.fan .card[data-pos="2"]{transform:translateX(-30%) rotate(-8deg);z-index:1}
-.fan:hover .card[data-pos="1"]{transform:translateX(36%) rotate(10deg)}
-.fan:hover .card[data-pos="2"]{transform:translateX(-36%) rotate(-10deg)}
-.fan .hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:13px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){.fan .ring,.fan .float{animation:none}}
 
 
 #inicio{flex-direction:column;position:relative;overflow:hidden}
@@ -250,15 +239,12 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   .calc-out{font-size:13px;margin-top:6px;line-height:1.35}
 
   .js #inicio>.wrap{padding-bottom:12px}
-  .fan{height:216px;margin:0 var(--gut) 84px}
-  .fan .card{--cw:96px}
+  .fan{--cw:84px;height:244px;margin:0 var(--gut) 56px}
 }
 @media(min-width:900px){
   .hero-text{max-width:600px;pointer-events:auto}
   #inicio>.wrap{position:relative;z-index:2;pointer-events:none}
-  .fan{--fcw:clamp(300px,26vw,420px);position:absolute;right:-6vw;bottom:-70px;width:calc(var(--fcw)*2.1);height:calc(var(--fcw)*1.78 + 50px);margin:0;z-index:1}
-  .fan .card{--cw:var(--fcw);top:25px;padding:1.4em 1.4em 3.4em}
-  .fan .hint{display:none}
+  .fan{--cw:clamp(100px,min(14.5vw,calc((100vw - 640px)/3.3)),230px);position:absolute;right:max(2vw,calc((100vw - 1280px)/2 + 24px));top:50%;margin-top:0;transform:translate(30%,-46%);width:calc(var(--cw)*4.1);height:calc(var(--cw)*4.6);z-index:1}
   .fan-note{display:block;margin-top:28px;font-size:14px;color:var(--muted);max-width:420px}
   .fan-note span{color:var(--accent);margin-right:6px}
 }
@@ -341,17 +327,11 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
           <a class="btn" href="#preco">Quero minha identidade visual</a>
           <small>R$ 500 · 7 dias de garantia</small>
         </div>
-        <p class="fan-note"><span>→</span> Exemplos do que você vai criar para o seu negócio. Clique nas artes para trocar a ordem.</p>
       </div>
     </div>
   </div>
-  <!-- Leque: para usar as artes reais, coloque <img src="..." alt="..."> dentro de cada .card -->
-  <div class="fan" id="fan" role="button" tabindex="0" aria-label="Exemplos de stories para negócios. Clique para trocar a ordem.">
-    <div class="card c1 has-img" data-pos="0"><img src="artes/leque/02-flora.png" alt="Exemplo de story de floricultura: buquês da semana, encomende pelo WhatsApp." width="1080" height="1920"></div>
-    <div class="card c2 has-img" data-pos="1"><img src="artes/leque/01-feira.png" alt="Exemplo de story de feira orgânica: Feira Verde, hortaliças da estação, reserve sua cesta." width="1080" height="1920"></div>
-    <div class="card c3 has-img" data-pos="2"><img src="artes/leque/03-cha.png" alt="Exemplo de story de casa de chá: chá da tarde, peça seu kit pelo WhatsApp." width="1080" height="1920"></div>
-    <span class="hint">Clique nas artes para trocar</span>
-  </div>
+  <!-- Giro 3D: artes de artes/giro em um anel de vidro -->
+  <div class="fan" id="fan" aria-label="Exemplos de artes para negócios, girando em anel."><div class="ring"><div class="glass" style="--i:0"><img src="artes/giro/01-brutalismo.png" alt="Exemplo de arte de feira orgânica, em estilo brutalista." width="1080" height="1350" draggable="false"><span class="back"></span></div><div class="glass" style="--i:1"><img src="artes/giro/03-pop-art.png" alt="Exemplo de arte de sucos, em estilo pop art." width="1080" height="1350" draggable="false"><span class="back"></span></div><div class="glass" style="--i:2"><img src="artes/giro/02-bauhaus.png" alt="Exemplo de arte de ateliê de cerâmica, em estilo Bauhaus." width="1080" height="1350" draggable="false"><span class="back"></span></div><div class="glass" style="--i:3"><img src="artes/giro/05-glass-morphism.png" alt="Exemplo de arte de spa botânico, em estilo glass morphism." width="1080" height="1350" draggable="false"><span class="back"></span></div><div class="glass" style="--i:4"><img src="artes/giro/04-risografia.png" alt="Exemplo de arte de feira de plantas, em estilo risografia." width="1080" height="1350" draggable="false"><span class="back"></span></div><div class="glass" style="--i:5"><img src="artes/giro/06-pixel-art.png" alt="Exemplo de arte de loja de plantas, em pixel art." width="1080" height="1350" draggable="false"><span class="back"></span></div><div class="glass" style="--i:6"><img src="artes/giro/07-y2k.png" alt="Exemplo de arte de loja de acessórios, em estilo Y2K." width="1080" height="1350" draggable="false"><span class="back"></span></div><div class="glass" style="--i:7"><img src="artes/giro/08-colagem.png" alt="Exemplo de arte de livraria, em estilo colagem." width="1080" height="1350" draggable="false"><span class="back"></span></div></div><div class="float"><img src="artes/giro/01-brutalismo.png" alt="Exemplo de arte de feira orgânica, em estilo brutalista." width="1080" height="1350" draggable="false"></div></div>
 </section>
 
 <section class="panel t-ink" id="como" data-label="Como funciona">
@@ -517,38 +497,23 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
     e.preventDefault();
     target.scrollIntoView({behavior:'smooth',block:'start'});
   });
-  var fan=document.getElementById('fan');
-  if(fan){
-    var cards=[].slice.call(fan.querySelectorAll('.card'));
-    function posOf(c){ return +c.getAttribute('data-pos'); }
-    function bringToFront(card){
-      var from=posOf(card);
-      if(from===0) return;
-      var center=cards.filter(function(c){ return posOf(c)===0; })[0];
-      card.style.zIndex=5;
-      card.setAttribute('data-pos','0');
-      center.setAttribute('data-pos',String(from));
-      setTimeout(function(){ card.style.zIndex=''; },800);
+  (function(){
+    var fan=document.getElementById('fan'); if(!fan) return;
+    var alvo=fan.querySelector('.float img'), atual=alvo.getAttribute('src'), t;
+    function destaque(g){
+      var im=g.querySelector('img'); if(!im) return;
+      var src=im.getAttribute('src'); if(src===atual) return;
+      atual=src; clearTimeout(t);
+      alvo.classList.add('troca');
+      t=setTimeout(function(){
+        alvo.setAttribute('src',src); alvo.setAttribute('alt',im.getAttribute('alt')||'');
+        alvo.classList.remove('troca');
+      },180);
     }
-    cards.forEach(function(c){
-      c.addEventListener('click',function(e){
-        e.stopPropagation();
-        if(posOf(c)===0){
-          var next=cards.filter(function(x){ return posOf(x)===1; })[0];
-          bringToFront(next);
-        } else bringToFront(c);
-      });
+    fan.addEventListener('mouseover',function(e){
+      var g=e.target.closest&&e.target.closest('.glass'); if(g) destaque(g);
     });
-    fan.addEventListener('click',function(){
-      bringToFront(cards.filter(function(x){ return posOf(x)===1; })[0]);
-    });
-    fan.addEventListener('keydown',function(e){
-      if(e.key==='Enter'||e.key===' '){
-        e.preventDefault();
-        bringToFront(cards.filter(function(x){ return posOf(x)===1; })[0]);
-      }
-    });
-  }
+  })();
   (function(){
     var car=document.getElementById('carrossel'); if(!car) return;
     var items=[].slice.call(car.querySelectorAll('.item')), n=items.length, cur=0;
