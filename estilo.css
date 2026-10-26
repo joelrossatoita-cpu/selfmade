@@ -241,6 +241,7 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   .sticky .btn.sm{white-space:nowrap;font-size:14px;padding:9px 12px}
   #inicio .lead{font-size:15px;margin-top:12px}
   #inicio .cta-row{margin-top:14px}
+  #inicio .cta-row .btn:not(.ghost){font-size:15px;padding:16px 14px}
   .fan{--cw:68px;height:244px;margin:0 var(--gut) 36px}
 }
 @media(min-width:900px){
