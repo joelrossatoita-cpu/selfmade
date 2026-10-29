@@ -4,6 +4,7 @@
   --cream:#F3EFE6;
   --ink:#13241C;
   --accent:#1E6B47;
+  --cta:#D98E04;
   --muted:#5b6a62;
   --line:#13241C;
   --soft:#E9E4D8;
@@ -21,11 +22,16 @@ a{color:inherit}
 header{border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:10}
 .top{display:flex;justify-content:space-between;align-items:center;height:60px}
 .logo{font-weight:600;font-size:22px;letter-spacing:-.04em;text-decoration:none}
-.btn{display:inline-block;background:var(--accent);color:var(--cream);text-decoration:none;font-weight:500;padding:16px 28px;font-size:17px;border:1px solid var(--accent);transition:background .15s,color .15s}
-.btn:hover{background:var(--ink);border-color:var(--ink)}
+.btn{display:inline-block;background:var(--accent);color:var(--cream);text-decoration:none;font-weight:500;padding:16px 28px;font-size:17px;border:1px solid var(--accent);box-shadow:4px 4px 0 var(--cta);transition:background .15s,color .15s,box-shadow .15s,transform .15s}
+.btn:hover{background:var(--ink);border-color:var(--ink);box-shadow:2px 2px 0 var(--cta);transform:translate(2px,2px)}
+.t-ink .btn{background:var(--cream);color:#13241C;border-color:var(--cream)}
+.t-ink .btn:hover{background:#13241C;color:var(--cream);border-color:var(--cream)}
+.btn.ghost{box-shadow:none}
+.btn.ghost:hover{transform:none}
 .btn.ghost{background:transparent;color:var(--muted);border-color:transparent;padding:16px 8px;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(0,0,0,.2)}
 .btn.ghost:hover{background:transparent;color:var(--ink);border-color:transparent;text-decoration-color:var(--ink)}
-.btn.sm{padding:9px 16px;font-size:15px}
+.btn.sm{padding:9px 16px;font-size:15px;box-shadow:3px 3px 0 var(--cta)}
+.btn.sm:hover{box-shadow:1px 1px 0 var(--cta);transform:translate(2px,2px)}
 nav.tabs{flex:1;min-width:0;margin-left:28px;align-self:stretch}
 nav.tabs div{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;height:100%;align-items:stretch}
 nav.tabs div::-webkit-scrollbar{display:none}
