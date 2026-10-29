@@ -160,31 +160,34 @@ h1{font-size:clamp(37.26px,4.8438vw,68px);letter-spacing:-.045em;line-height:.94
 .tile:nth-child(odd){background:var(--accent);color:var(--cream)}
 .tile:nth-child(3){background:var(--ink);color:var(--cream)}
 
-/* preço */
-.price{background:var(--accent);color:var(--cream)}
-.price .num{color:var(--cream);opacity:.8}
-#preco h2{max-width:none}
-.preco-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
-.p-card{background:var(--cream);color:var(--ink);border-radius:26px;padding:20px 22px;box-shadow:0 4px 10px rgba(0,0,0,.14),0 30px 60px -22px rgba(0,0,0,.5)}
-.p-tag{display:inline-block;border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;padding:3px 14px;font-size:14px;font-weight:500}
-.p-valor{font-size:76px;font-weight:500;letter-spacing:-.06em;line-height:.95;margin-top:8px}
-.p-valor small{font-size:.3em;letter-spacing:-.02em;margin-right:6px;vertical-align:top;position:relative;top:.3em}
-.p-sub{margin-top:6px;font-size:15px;color:#4a5a50}
-.p-selo{display:flex;gap:12px;align-items:center;background:#E3ECDD;border-radius:16px;padding:10px 14px;margin-top:14px}
-.p-selo svg{width:34px;height:34px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.7}
-.p-selo b{display:block;font-weight:500;font-size:16px;line-height:1.2}
-.p-selo span{display:block;font-size:13px;color:#4a5a50}
-.price .btn.p-btn{display:block;width:100%;text-align:center;margin-top:14px;border-radius:16px;background:var(--accent);color:var(--cream);border-color:var(--accent);padding:15px 18px;font-size:17px}
-.price .btn.p-btn:hover{background:var(--ink);border-color:var(--ink)}
-.p-nota{margin-top:8px;font-size:12.5px;line-height:1.4;color:#4a5a50}
-.p-itens{display:none}
-.p-calc{background:rgba(19,36,28,.3);border-radius:20px;padding:14px 16px}
-.p-calc label{display:block;font-size:14px;font-weight:500;line-height:1.3}
-.calc-row{display:flex;align-items:center;gap:12px;margin-top:10px}
-.calc-row output{display:block;width:104px;border-radius:12px;padding:8px 12px;font:500 17px 'Inter Tight',sans-serif;color:var(--ink);background:var(--cream);user-select:none;cursor:default}
-.calc-row input[type=range]{flex:1;accent-color:var(--cream);min-width:0}
-.calc-out{margin-top:8px;font-size:14px;line-height:1.4}
+/* preço: 2º CTA */
+#preco h2{max-width:none;font-size:30px;line-height:1.02}
+#preco h2 .sub{display:block;margin-top:10px;font-size:18px;letter-spacing:-.02em;line-height:1.2;color:var(--muted)}
+.c2-marcas{margin-top:4px}
+.c2-thumbs{display:flex;gap:4px}
+.c2-thumbs img{flex:1;min-width:0;aspect-ratio:4/5;height:auto;object-fit:cover;display:block;background:var(--soft)}
+.c2-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:18px}
+.c2-cta{margin-top:16px}
+.c2-cta .btn{display:block;text-align:center;padding:14px 16px;font-size:16px}
+.c2-cta p{margin-top:8px;font-size:13px;color:var(--muted)}
+.c2-cta p b{font-weight:500;color:var(--ink)}
+.c2-calc label{display:block;font-size:14px;font-weight:500;line-height:1.3}
+.calc-row{display:flex;align-items:center;gap:14px;margin-top:8px}
+.calc-row output{flex:none;min-width:5.2em;font-size:26px;font-weight:500;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;user-select:none}
+.calc-row output::before{content:"R$ ";font-size:.55em;letter-spacing:0}
+.calc-row input[type=range]{flex:1;min-width:0;-webkit-appearance:none;appearance:none;background:transparent;height:24px;cursor:pointer}
+.calc-row input[type=range]::-webkit-slider-runnable-track{height:2px;background:var(--ink)}
+.calc-row input[type=range]::-moz-range-track{height:2px;background:var(--ink)}
+.calc-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-7px;background:var(--accent);border:0;border-radius:0}
+.calc-row input[type=range]::-moz-range-thumb{width:16px;height:16px;background:var(--accent);border:0;border-radius:0}
+.calc-row input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.c2-barras{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 10px;align-items:center;margin-top:10px;font-size:13px}
+.c2-barras i{display:block;height:12px;background:var(--ink);transition:width .25s ease}
+.c2-barras i.sm{background:var(--accent)}
+.c2-barras b{font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
+.calc-out{margin-top:10px;font-size:15px;line-height:1.35;letter-spacing:-.01em}
 .calc-out b{font-weight:600}
+.c2-nota{margin-top:6px;font-size:11.5px;line-height:1.35;color:var(--muted)}
 
 /* perguntas */
 .faq-grid{display:block}
@@ -214,26 +217,8 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   #inicio .eyebrow,#inicio .cue{display:none}
 
   details{padding:11px 0}
+  #preco>.wrap,.js #preco>.wrap{justify-content:flex-start;padding-top:10px;padding-bottom:76px}
   .faq-contato{margin-top:12px;padding:13px 16px}
-  #preco h2{font-size:30px}
-  #preco>.wrap,.js #preco>.wrap{padding-top:10px;padding-bottom:76px}
-  .p-tag,.p-sub,.p-btn+.p-nota,.p-selo span{display:none}
-  .p-valor{font-size:46px;margin-top:0}
-  .p-card{padding:12px 16px}
-  .p-selo{padding:11px 14px;margin-top:10px}
-  .price .btn.p-btn{padding:12px 16px;margin-top:8px;font-size:16px}
-  .p-nota{margin-top:6px;font-size:12px}
-  .preco-grid{gap:10px;margin-top:12px}
-  .p-dir{display:flex;flex-direction:column;gap:10px}
-  .p-itens{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .p-item{display:flex;align-items:center;gap:10px;background:rgba(243,239,230,.1);border:1px solid rgba(243,239,230,.28);border-radius:14px;padding:8px 10px}
-  .p-item svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--cream);stroke-width:1.6}
-  .p-item b{display:block;margin:0;font-weight:500;font-size:13px;line-height:1.2}
-  .p-item span{display:none}
-  .p-calc{padding:10px 12px}
-  .p-calc label{font-size:13px}
-  .calc-row{margin-top:8px}
-  .calc-out{font-size:13px;margin-top:6px;line-height:1.35}
 
   .js #inicio>.wrap{padding-bottom:12px}
   #inicio h1{font-size:35.19px}
@@ -269,28 +254,26 @@ details p{margin-top:10px;color:var(--muted);font-size:15px;line-height:1.5;max-
   .faq-contato p{font-size:16px;margin-top:8px}
   .faq-contato a{font-size:18px;margin-top:14px}
 
-  #preco>.wrap,.js #preco>.wrap{padding-bottom:66px}
-  .preco-grid{grid-template-columns:.86fr 1.14fr;gap:28px;align-items:stretch;margin-top:26px}
-  .p-card{padding:30px 32px}
-  .p-tag{font-size:15px;padding:4px 16px}
-  .p-valor{font-size:128px;margin-top:14px}
-  .p-sub{font-size:17px}
-  .p-selo{margin-top:20px;padding:14px 18px}
-  .p-selo svg{width:40px;height:40px}
-  .p-selo b{font-size:18px}
-  .price .btn.p-btn{margin-top:20px;padding:18px 20px;font-size:19px}
-  .p-nota{font-size:13.5px;margin-top:12px}
-  .p-dir{display:flex;flex-direction:column;gap:14px}
-  .p-itens{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-  .p-item{background:rgba(243,239,230,.1);border:1px solid rgba(243,239,230,.28);border-radius:16px;padding:12px 12px 14px}
-  .p-item svg{width:24px;height:24px;fill:none;stroke:var(--cream);stroke-width:1.6;display:block}
-  .p-item b{display:block;margin-top:8px;font-weight:500;font-size:14.5px;line-height:1.2}
-  .p-item span{display:none}
-  .p-calc{padding:18px 22px 16px}
-  .p-calc{flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px 28px}
-  .p-calc label{font-size:19px}
-  .calc-row{margin-top:16px}
-  .calc-out{font-size:24px;margin-top:26px;line-height:1.3;letter-spacing:-.01em}
+
+  #preco>.wrap,.js #preco>.wrap{justify-content:flex-start;padding-top:25px;padding-bottom:36px}
+  #preco h2{font-size:clamp(48px,5.28vw,67px)}
+  #preco h2 .sub{margin-top:17px;font-size:clamp(26px,2.64vw,34px)}
+  .c2-thumbs{gap:8px}
+  .c2-thumbs img{flex:none;width:64px}
+  .c2-grid{grid-template-columns:minmax(0,13fr) minmax(0,7fr);gap:40px;margin-top:34px}
+  .c2-esq{display:flex;flex-direction:column;justify-content:space-between;gap:34px}
+  .c2-cta{margin-top:0}
+  .c2-cta .btn{display:inline-block;padding:22px 36px;font-size:22px}
+  .c2-cta p{margin-top:14px;font-size:18px}
+  .c2-calc label{font-size:19px}
+  .calc-row{margin-top:17px}
+  .calc-row output{font-size:48px}
+  .calc-row input[type=range]::-webkit-slider-thumb{width:19px;height:19px;margin-top:-8.5px}
+  .calc-row input[type=range]::-moz-range-thumb{width:19px;height:19px}
+  .c2-barras{margin-top:22px;gap:12px 17px;font-size:18px}
+  .c2-barras i{height:19px}
+  .calc-out{margin-top:19px;font-size:24px}
+  .c2-nota{margin-top:10px;font-size:15.5px}
 
   .carrossel{--iw:min(330px,calc((100svh - 410px)*.8))}
   .ex-lead{font-size:19px}

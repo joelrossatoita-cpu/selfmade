@@ -90,31 +90,27 @@
   </div>
 </section>
 
-<section class="panel price" id="preco" data-label="Preço">
+<section class="panel" id="preco" data-label="Preço">
   <div class="wrap">
     <span class="num">03 — Preço</span>
-    <h2>Uma vez só. Sem mensalidade<span style="opacity:.7">.</span></h2>
-    <div class="content preco-grid">
-      <div class="p-card">
-        <span class="p-tag">Pagamento único</span>
-        <div class="p-valor"><small>R$</small>500</div>
-        <p class="p-sub">Sem renovação e sem mensalidade.</p>
-        <a class="btn p-btn" href="#preco">Quero minha cara na minha marca →</a>
-        <div class="p-selo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><div><b>7 dias de garantia</b><span>Devolução integral do valor</span></div></div>
-        <p class="p-nota">Acesso por e-mail logo após o pagamento.</p>
+    <div class="c2-marcas"><div class="c2-thumbs" aria-hidden="true"><img src="artes/verbena/01-apresentacao.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/verbena/02-buque.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/nichos/09-academia.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/verbena/03-rega.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/nichos/10-padaria.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/verbena/05-assinatura.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/nichos/11-barbearia.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/verbena/07-bastidores.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/verbena/08-encomenda.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"><img src="artes/nichos/12-cafeteria.png" alt="" width="1080" height="1350" loading="lazy" draggable="false"></div></div>
+    <div class="c2-grid">
+      <div class="c2-esq">
+        <h2>Um bom design diferencia sua empresa<span class="dot">.</span><span class="sub">E você não precisa gastar muito para isso.</span></h2>
+        <div class="c2-cta">
+          <a class="btn" href="#preco">Quero destaque para a minha empresa</a>
+          <p><b>R$ 500</b> · pagamento único · 7 dias de garantia</p>
+        </div>
       </div>
-      <div class="p-dir">
-        <div class="p-itens">
-          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg><b>Sistema de criação pronto</b><span>Modelos e instruções para criar as suas artes.</span></div>
-          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/></svg><b>Vídeo-tutorial de até 2 horas</b><span>Do primeiro acesso ao primeiro post.</span></div>
-          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="10" rx="2"/><rect x="13" y="3" width="8" height="6" rx="2"/><rect x="13" y="11" width="8" height="10" rx="2"/><rect x="3" y="15" width="8" height="6" rx="2"/></svg><b>Modelos de story, post e reel</b><span>Todos na identidade da sua marca.</span></div>
-          <div class="p-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10" r="1.2"/><circle cx="12" cy="7.5" r="1.2"/><circle cx="15.5" cy="10" r="1.2"/><path d="M12 21c-1.5 0-2-1.2-1.4-2.4.7-1.4 2-1.6 3.4-1.6h2.2"/></svg><b>Identidade visual sugerida</b><span>Cores, fontes e estilo. Você ajusta.</span></div>
+      <div class="c2-calc">
+        <label for="mens-r">Quanto você paga, ou pagaria, por mês a uma agência ou freelancer?</label>
+        <div class="calc-row"><output id="mens" for="mens-r" aria-label="Valor da mensalidade em reais">500</output><input id="mens-r" type="range" min="150" max="3000" step="50" value="500" aria-label="Ajustar o valor da mensalidade"></div>
+        <div class="c2-barras" aria-hidden="true">
+          <span>Agência</span><i id="bar-ag"></i><b id="val-ag"></b>
+          <span>selfmade</span><i id="bar-sm" class="sm"></i><b id="val-sm"></b>
         </div>
-        <div class="p-calc">
-          <label for="mens-r">Quanto você paga, ou pagaria, por mês a uma agência ou freelancer?</label>
-          <div class="calc-row"><output id="mens" for="mens-r" aria-label="Valor da mensalidade em reais">500</output><input id="mens-r" type="range" min="150" max="3000" step="50" value="500" aria-label="Ajustar o valor da mensalidade"></div>
-          <p class="calc-out" id="calc-out" aria-live="polite"></p>
-        </div>
+        <p class="calc-out" id="calc-out" aria-live="polite"></p>
+        <p class="c2-nota">Em 12 meses. A selfmade inclui a assinatura do Claude, paga à parte e estimada em R$ 120 por mês.</p>
       </div>
     </div>
   </div>
