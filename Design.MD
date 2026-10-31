@@ -149,8 +149,6 @@ A **landing (Início)** define a altura do botão de CTA.
 
 Sombra dura de 4 px 4 px em mostarda (3 px no botão pequeno). Sem cantos arredondados.
 
-> **Divergência atual:** o CTA da seção Preço mede **79 px** no desktop (padding 22 px × 36 px, fonte 22 px), acima dos 59,5 px da landing. Para respeitar a regra, ele deve ser ajustado para 59,5 px.
-
 ---
 
 ## 5. Não fazer
