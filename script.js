@@ -97,25 +97,6 @@
     layout();
   })();
   (function(){
-    var n=document.getElementById('mens'), r=document.getElementById('mens-r'), out=document.getElementById('calc-out');
-    if(!n||!r||!out) return;
-    var PRODUTO=500, CLAUDE=120, ANO=12;
-    var bA=document.getElementById('bar-ag'), bS=document.getElementById('bar-sm'), vA=document.getElementById('val-ag'), vS=document.getElementById('val-sm');
-    function brl(v){ return 'R$ '+Math.round(v).toLocaleString('pt-BR'); }
-    function calc(){
-      var m=parseFloat(r.value); n.textContent=m.toLocaleString('pt-BR');
-      var ag=m*ANO, sm=PRODUTO+CLAUDE*ANO, mx=Math.max(ag,sm);
-      if(bA){ bA.style.width=(ag/mx*100)+'%'; bS.style.width=(sm/mx*100)+'%'; vA.textContent=brl(ag); vS.textContent=brl(sm); }
-      if(!(m>CLAUDE)){ out.innerHTML='Com esse valor, a agência sai <b>mais barata</b> que a selfmade.'; return; }
-      var mes=Math.floor(PRODUTO/(m-CLAUDE))+1;
-      var t=mes<=1 ? 'A selfmade já é <b>mais barata no 1º mês</b>.' : 'A partir do <b>mês '+mes+'</b> a agência fica mais cara que a selfmade.';
-      if(ag>sm) t+=' Em um ano, são <b>'+brl(ag-sm)+' a menos</b>.';
-      out.innerHTML=t;
-    }
-    r.addEventListener('input',calc);
-    calc();
-  })();
-  (function(){
     var ds=[].slice.call(document.querySelectorAll('#faq details'));
     ds.forEach(function(d){ d.addEventListener('toggle',function(){ if(d.open) ds.forEach(function(o){ if(o!==d) o.open=false; }); }); });
   })();

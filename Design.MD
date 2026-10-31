@@ -35,8 +35,8 @@ Tema creme com verde-tinta. A seção "Como funciona" inverte (fundo escuro). Nu
 | Cor | Hex | Variável | Onde usa | Onde NÃO usa |
 |---|---|---|---|---|
 | Creme | `#F3EFE6` | `--bg`, `--cream` | Fundo da página, do cabeçalho e das seções claras. Texto e botão dentro da seção escura. | Não é cor de destaque. Não usar como texto sobre o fundo creme. |
-| Verde-tinta | `#13241C` | `--ink`, `--line` | Texto principal, bordas de 1px, trilho do slider, barra "Agência". Fundo da seção escura. | Não usar em botões de CTA. Não usar como fundo de seções claras. |
-| Verde | `#1E6B47` | `--accent` | **Fundo do botão de CTA**, ponto final dos títulos, números "01 —", link ativo do índice, marcador do título, barra "selfmade", pontos do passo a passo. | **Nunca** fora dos itens listados ao lado. Não usar em textos corridos. Ver "Não fazer". |
+| Verde-tinta | `#13241C` | `--ink`, `--line` | Texto principal, bordas de 1px, bordas do cartão do Preço. Fundo da seção escura. | Não usar em botões de CTA. Não usar como fundo de seções claras. |
+| Verde | `#1E6B47` | `--accent` | **Fundo do botão de CTA**, ponto final dos títulos, números "01 —", link ativo do índice, marcador do título, pontos do passo a passo. | **Nunca** fora dos itens listados ao lado. Não usar em textos corridos. Ver "Não fazer". |
 | Mostarda | `#D98E04` | `--cta` | **Somente** a sombra dura dos botões (4px 4px; 3px 3px no botão pequeno). | Não usar como fundo, texto ou borda. |
 | Cinza-verde | `#5b6a62` | `--muted` | Textos secundários: respostas do FAQ, descrição dos passos, notas, legendas, índice inativo. | Não usar em títulos nem em texto de venda principal. |
 | Creme escuro | `#E9E4D8` | `--soft` | Caixa de contato do FAQ e fundo de miniaturas. | Não usar como fundo de seção inteira. |
@@ -130,12 +130,13 @@ As duas têm a mesma margem lateral e a mesma altura de seção das outras, mas 
 - Padding de baixo no celular: **24 px** (não 76 px), porque o leque 3D ocupa o rodapé.
 - Texto limitado a 600 px de largura. O leque 3D fica à direita.
 
-**Preço**
-- Faixa de miniaturas **acima** do título, logo depois do rótulo "03 — Preço" (o título começa a ~217 px do topo no desktop e ~146 px no celular).
-- Duas colunas no desktop (13 fr : 7 fr) com **40 px** entre elas; uma coluna com 18 px no celular.
-- Dentro da coluna esquerda: título → botão com **32 px**.
-- Botão → linha de preço ("R$ 500 · pagamento único…"): 14 px (desktop) / 8 px (celular).
-- Calculadora: rótulo → número 17 px (desktop) / 8 px (celular); número → barras 22 px / 10 px; barras → resultado 19 px / 10 px.
+**Preço** (vitrine + cartão)
+- Rótulo "03 — Preço", título (h2, uma linha no desktop), subtítulo e, abaixo, duas colunas.
+- Desktop: **11 fr : 9 fr** com **40 px** entre elas. Esquerda: grade de **8 artes de exemplo** (4 por linha, 8 px entre elas, proporção 4:5) e a legenda "Marcas de exemplo, todas fictícias.". Direita: cartão com borda de 1 px (`--line`), sem fundo, padding `--r2`.
+- Celular: uma coluna com **18 px** entre vitrine e cartão. A vitrine mostra **3 artes** (as demais ficam ocultas) e o cartão tem padding de 16 px.
+- Cartão: preço "R$ 500" no tamanho do título + "pagamento único" (19 px desktop / 15 px celular, cinza-verde) → lista de 3 respostas com filete de 1 px (sem mensalidade e sem renovação; 7 dias de garantia; "se você manda mensagem no WhatsApp, consegue usar") → botão de CTA, com `--r2` (desktop) / `--r1` (celular) de espaço acima.
+- Lista: 14 px acima e abaixo de cada item no desktop, 8 px no celular.
+- Sem calculadora, sem slider e sem barras. Nenhum verde no cartão além do botão e do ponto do título.
 
 ### 4.5 Botão de CTA — altura de referência
 
